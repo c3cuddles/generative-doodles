@@ -108,6 +108,18 @@ function generate_doodle(x, y, width, height) {
     case 1: // square
       console.log("chose square!");
       square(x, y, Math.min(width, height));
+      if (width < height) {
+        // then fill rest of height with lines!
+
+        // line_y jumps down the height of the square. The height of the square is also the width of the square in this case! (since we chose min of width, height.) so just use width to save re-computing that fact we already know
+        console.log("filling area BELOW SQUARE with lines...");
+        for (line_y = y + width; line_y < y + height; line_y += 2) {
+          line(x, line_y, x + width, line_y);
+        }
+      } else if (height > width) {
+        console.log("TODO: implement filling to the right of square");
+        // TODO: then fill the rest of the width with little lines/dots
+      }
       break;
 
     default:
@@ -118,6 +130,31 @@ function generate_doodle(x, y, width, height) {
       break;
   }
   console.log("done generating doodle :)");
+}
+
+/**
+ * Fills a given area with lines. Randomly choose if it will be vertical or horizontal lines.
+ *
+ * @param {*} x
+ * @param {*} y
+ * @param {*} width
+ * @param {*} height
+ */
+function fill_lines(x, y, width, height) {
+  // TODO: implement
+}
+
+/**
+ *
+ *
+ * @param {*} x
+ * @param {*} y
+ * @param {*} width
+ * @param {*} height
+ * @param {*} orientation - may be "horizontal"/"h" or "vertical"/"v"
+ */
+function fill_lines(x, y, width, height, orientation) {
+  // TODO: implement
 }
 
 function draw() {}
